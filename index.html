@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P A H C</title>
+    <style>
+        @font-face {
+            font-family: 'P A H C';
+            src: url('PAHC.ttf') format('truetype');
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: #edb6c4;
+            font-family: 'P A H C', monospace;
+            font-weight: normal;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .lyrics {
+            font-size: 48px;
+            margin-bottom: 5px;
+            max-width: 30%;
+            line-height: 1.1;
+        }
+
+        .artist-info {
+            font-size: 22px;
+            line-height: 1.1;
+            text-transform: none;
+        }
+
+        .artist-info a {
+            color: #edb6c4;
+            text-decoration: underline;
+        }
+
+        .artist-info a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="lyrics" id="lyrics"></div>
+    <div class="artist-info" id="artist-info"></div>
+
+    <script>
+        const yt = (v, time) => {
+            const url = `https://www.youtube.com/watch?v=${v}`;
+            if (time) {
+                return `${url}&t=${time}`;
+            }
+            return url;
+        }
+        const songData = [
+            {
+                lyrics: "D.I.Y., cause it's good, D.I.Y., against you",
+                artist: "LxExAxRxNx",
+                songName: "D.I.Y.",
+                youtubeLink: yt("3THGs6-TDQ0", 213)
+            },
+            {
+                lyrics: "Cinquanta carte a botta, come piace a noi, il rock and roll non paga, ma questo già lo sai",
+                artist: "Semprefreski",
+                songName: "Più Tequila Più Violenza",
+                youtubeLink: yt("KewoPUzKSdw")
+            },
+            {
+                lyrics: "Con una mossa hai azzerato tutto quello in cui credo; idiota non comprendi il senso di un'azione",
+                artist: "Sonny Corleone",
+                songName: "Il Senso Di Un'Azione",
+                youtubeLink: yt("WoeJunN4eRs", 505)
+            },
+            {
+                lyrics: "Non mi sono mai pentito di aver fatto la mia scelta, dignitosa con coerenza",
+                artist: "Feccia Tricolore",
+                songName: "Dignità E Coerenza",
+                youtubeLink: yt("NLmC-y02wvg", 149)
+            }
+            {
+                lyrics: "Arturo era il suo nome, lavora in ospedale, viveva appeso a un filo sperando di non affogare",
+                artist: "Magilla Gorilla",
+                songName: "Arturo",
+                youtubeLink: yt("WaoyC_tBBHA")
+            }
+        ];
+
+        function displayRandomSong() {
+            const randomIndex = Math.floor(Math.random() * songData.length);
+            const song = songData[randomIndex];
+
+            document.getElementById('lyrics').textContent = song.lyrics;
+            document.getElementById('artist-info').innerHTML =
+                `<a href="${song.youtubeLink}" target="_blank">${song.artist} - ${song.songName}</a>`;
+        }
+
+        displayRandomSong();
+    </script>
+</body>
+
+</html>

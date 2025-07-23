@@ -13,7 +13,6 @@
 
         body {
             margin: 0;
-            padding: 0;
             background-color: black;
             color: #edb6c4;
             font-family: 'P A H C', monospace;
@@ -26,12 +25,14 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         .lyrics {
             font-size: 48px;
             margin-bottom: 5px;
-            max-width: 30%;
+            max-width: 60%;
             line-height: 1.1;
         }
 
@@ -48,6 +49,29 @@
 
         .artist-info a:hover {
             text-decoration: underline;
+        }
+
+        /* Media queries for responsive design */
+        @media screen and (max-width: 768px) {
+            .lyrics {
+                font-size: 32px;
+                max-width: 90%;
+            }
+
+            .artist-info {
+                font-size: 18px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .lyrics {
+                font-size: 24px;
+                max-width: 100%;
+            }
+
+            .artist-info {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
@@ -69,31 +93,43 @@
                 lyrics: "D.I.Y., cause it's good, D.I.Y., against you",
                 artist: "LxExAxRxNx",
                 songName: "D.I.Y.",
-                youtubeLink: yt("3THGs6-TDQ0", 213)
+                songLink: yt("3THGs6-TDQ0", 213)
             },
             {
                 lyrics: "Cinquanta carte a botta, come piace a noi, il rock and roll non paga, ma questo già lo sai",
                 artist: "Semprefreski",
                 songName: "Più Tequila Più Violenza",
-                youtubeLink: yt("KewoPUzKSdw")
+                songLink: yt("KewoPUzKSdw")
             },
             {
                 lyrics: "Con una mossa hai azzerato tutto quello in cui credo; idiota non comprendi il senso di un'azione",
                 artist: "Sonny Corleone",
                 songName: "Il Senso Di Un'Azione",
-                youtubeLink: yt("WoeJunN4eRs", 505)
+                songLink: yt("WoeJunN4eRs", 505)
             },
             {
                 lyrics: "Non mi sono mai pentito di aver fatto la mia scelta, dignitosa con coerenza",
                 artist: "Feccia Tricolore",
                 songName: "Dignità E Coerenza",
-                youtubeLink: yt("NLmC-y02wvg", 149)
-            }
+                songLink: yt("NLmC-y02wvg", 149)
+            },
             {
                 lyrics: "Arturo era il suo nome, lavora in ospedale, viveva appeso a un filo sperando di non affogare",
                 artist: "Magilla Gorilla",
                 songName: "Arturo",
-                youtubeLink: yt("WaoyC_tBBHA")
+                songLink: yt("WaoyC_tBBHA")
+            },
+            {
+                lyrics: "You oppressor, you jerk; you, the leader of the band",
+                artist: "F.U.G.",
+                songName: "Fuck U Giacomazzi",
+                songLink: yt("wJL0-69T2yA")
+            },
+            {
+                lyrics: "Choosing the comfort way, easy answers come with no pain",
+                artist: "ANF",
+                songName: "Confirmation Bias",
+                songLink: "https://alwaysneverfun.bandcamp.com/track/confirmation-bias"
             }
         ];
 
@@ -103,7 +139,7 @@
 
             document.getElementById('lyrics').textContent = song.lyrics;
             document.getElementById('artist-info').innerHTML =
-                `<a href="${song.youtubeLink}" target="_blank">${song.artist} - ${song.songName}</a>`;
+                `<a href="${song.songLink}" target="_blank">${song.artist} - ${song.songName}</a>`;
         }
 
         displayRandomSong();
